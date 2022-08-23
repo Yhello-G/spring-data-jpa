@@ -22,7 +22,12 @@ public class Course {
     )
     @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "course_sequence")
     private long courseId;
-
     private String courseTitle;
     private Integer credits;
+
+    // getting a reference of bidirectional linked table. IF cascade already use,
+    // USE: mappedBy and reference the column in the referenced table whose name match this.object name, like so
+
+    @OneToOne(mappedBy = "course")
+    private CourseMaterial courseMaterial;
 }
